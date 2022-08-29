@@ -33,7 +33,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
       backgroundColor: kPrimaryColor,
       body: Center(
         child: Image.asset(
-          'assets/icon_star.png',
+          'assets/restaurant.png',
           height: 200,
           width: 200,
         ),

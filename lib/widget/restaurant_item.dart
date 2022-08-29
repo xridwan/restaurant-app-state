@@ -3,10 +3,15 @@ import 'package:restaurant_app_state/common/styles.dart';
 import 'package:restaurant_app_state/model/restaurant.dart';
 import 'package:restaurant_app_state/ui/restaurant_detail_page.dart';
 
+import '../model/restaurant.dart';
+
 class RestaurantItem extends StatelessWidget {
   final Restaurant restaurant;
 
-  const RestaurantItem({Key? key, required this.restaurant}) : super(key: key);
+  const RestaurantItem({
+    Key? key,
+    required this.restaurant,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +19,11 @@ class RestaurantItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, RestaurantDetailPage.routeName,
-              arguments: restaurant);
+          Navigator.pushNamed(
+            context,
+            RestaurantDetailPage.routeName,
+            arguments: restaurant.id,
+          );
         },
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 8),
