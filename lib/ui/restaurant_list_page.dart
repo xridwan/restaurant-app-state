@@ -16,7 +16,9 @@ class RestaurantListPage extends StatelessWidget {
     return Consumer<RestaurantProvider>(
       builder: (context, state, _) {
         if (state.state == ResultState.loading) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         } else if (state.state == ResultState.hasData) {
           return ListView.builder(
             shrinkWrap: true,
@@ -26,12 +28,6 @@ class RestaurantListPage extends StatelessWidget {
               return RestaurantItem(restaurant: restaurant);
             },
           );
-        } else if (state.state == ResultState.noData) {
-          return Center(
-            child: Lottie.asset(
-              'assets/empty_data.json',
-            ),
-          );
         } else if (state.state == ResultState.error) {
           return Center(
             child: Lottie.asset(
@@ -39,9 +35,9 @@ class RestaurantListPage extends StatelessWidget {
             ),
           );
         } else {
-          return const Center(
-            child: Material(
-              child: Text(''),
+          return Center(
+            child: Lottie.asset(
+              'assets/empty_data.json',
             ),
           );
         }
@@ -78,7 +74,7 @@ class RestaurantListPage extends StatelessWidget {
         create: (context) {
           RestaurantProvider provider =
               RestaurantProvider(apiService: ApiService());
-          return provider.getRestaurants();
+          return (provider.getRestaurants());
         },
         child: _buildList(),
       ),

@@ -40,7 +40,7 @@ class RestaurantDetailPage extends StatelessWidget {
             } else if (state.state == ResultState.error) {
               return Center(
                 child: Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   child: Lottie.asset('assets/empty_data.dart'),
                 ),
               );

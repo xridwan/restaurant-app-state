@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:restaurant_app_state/model/restaurant.dart';
 import 'package:http/http.dart' as http;
 import 'package:restaurant_app_state/model/restaurant_detail.dart';
-import 'package:restaurant_app_state/model/restaurant_search.dart';
 import 'package:restaurant_app_state/utils/config.dart';
 
 class ApiService {
@@ -12,6 +11,20 @@ class ApiService {
       final response = await http.get(Uri.parse('${Config.baseUrl}list'));
       if (response.statusCode == 200) {
         return RestaurantResult.fromJson(json.decode(response.body));
+      } else {
+        throw Exception("Failed get data");
+      }
+    } catch (e) {
+      throw Exception("$e");
+    }
+  }
+
+  Future<RestaurantSearch> getSearch({String query = " "}) async {
+    try {
+      final response =
+          await http.get(Uri.parse('${Config.baseUrl}search?q=$query'));
+      if (response.statusCode == 200) {
+        return RestaurantSearch.fromJson(json.decode(response.body));
       } else {
         throw Exception("Failed get data");
       }
@@ -30,20 +43,6 @@ class ApiService {
       }
     } catch (e) {
       throw Exception('$e');
-    }
-  }
-
-  Future<RestaurantSearch> getSearch({String query = ''}) async {
-    try {
-      final response =
-          await http.get(Uri.parse('${Config.baseUrl}search?q=$query'));
-      if (response.statusCode == 200) {
-        return RestaurantSearch.fromJson(json.decode(response.body));
-      } else {
-        throw Exception("Failed get data");
-      }
-    } catch (e) {
-      throw Exception("$e");
     }
   }
 }
