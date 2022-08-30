@@ -29,9 +29,13 @@ class RestaurantListPage extends StatelessWidget {
             },
           );
         } else if (state.state == ResultState.error) {
-          return noInternetWidget(state.message);
+          return Center(
+            child: noInternetWidget(state.message),
+          );
         } else {
-          return emptyDataWidget(state.message);
+          return Center(
+            child: emptyDataWidget(state.message),
+          );
         }
       },
     );

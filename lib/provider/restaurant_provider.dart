@@ -55,7 +55,7 @@ class RestaurantProvider extends ChangeNotifier {
     } catch (e) {
       _state = ResultState.error;
       notifyListeners();
-      return _message = "$e";
+      return _message = "No Internet Connection";
     }
   }
 
@@ -76,7 +76,7 @@ class RestaurantProvider extends ChangeNotifier {
     } catch (e) {
       _state = ResultState.error;
       notifyListeners();
-      return _message = "$e";
+      return _message = "No Internet Connection";
     }
   }
 
@@ -97,7 +97,7 @@ class RestaurantProvider extends ChangeNotifier {
     } catch (e) {
       _state = ResultState.error;
       notifyListeners();
-      return _message = "$e";
+      return _message = "No Internet Connection";
     }
   }
 

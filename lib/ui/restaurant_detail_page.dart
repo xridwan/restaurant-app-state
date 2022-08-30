@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_app_state/api/api_service.dart';
 import 'package:restaurant_app_state/common/styles.dart';

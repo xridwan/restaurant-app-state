@@ -12,13 +12,12 @@ Widget noInternetWidget(String message) {
         height: 250,
       ),
       const SizedBox(height: 8),
-      Text(
-        message,
-        style: blackTextStyle.copyWith(
-          fontSize: 24,
-          fontWeight: semiBold,
-        ),
-      ),
+      Text(message,
+          style: blackTextStyle.copyWith(
+            fontSize: 24,
+            fontWeight: semiBold,
+          ),
+          textAlign: TextAlign.center),
     ],
   );
 }
@@ -33,13 +32,12 @@ Widget emptyDataWidget(String message) {
         height: 250,
       ),
       const SizedBox(height: 8),
-      Text(
-        message,
-        style: blackTextStyle.copyWith(
-          fontSize: 24,
-          fontWeight: semiBold,
-        ),
-      ),
+      Text(message,
+          style: blackTextStyle.copyWith(
+            fontSize: 24,
+            fontWeight: semiBold,
+          ),
+          textAlign: TextAlign.center),
     ],
   );
 }
