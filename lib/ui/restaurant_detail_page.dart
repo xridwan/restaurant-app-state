@@ -6,6 +6,7 @@ import 'package:restaurant_app_state/common/styles.dart';
 import 'package:restaurant_app_state/model/restaurant_detail.dart';
 import 'package:restaurant_app_state/provider/restaurant_provider.dart';
 import 'package:restaurant_app_state/widget/menu_item.dart';
+import 'package:restaurant_app_state/widget/response_widget.dart';
 
 class RestaurantDetailPage extends StatelessWidget {
   static const routeName = '/restaurant_detail';
@@ -32,22 +33,15 @@ class RestaurantDetailPage extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             } else if (state.state == ResultState.hasData) {
-              return detailScreen(context, state.detail.restaurant, provider);
-            } else if (state.state == ResultState.noData) {
-              return Center(
-                child: Text(state.message),
+              return detailScreen(
+                context,
+                state.detail.restaurant,
+                provider,
               );
             } else if (state.state == ResultState.error) {
-              return Center(
-                child: Container(
-                  padding: const EdgeInsets.all(16),
-                  child: Lottie.asset('assets/empty_data.dart'),
-                ),
-              );
+              return noInternetWidget(state.message);
             } else {
-              return const Center(
-                child: Text('No data'),
-              );
+              return emptyDataWidget(state.message);
             }
           },
         ),
@@ -76,7 +70,10 @@ class RestaurantDetailPage extends StatelessWidget {
                     GestureDetector(
                       onTap: (() => Navigator.pop(context)),
                       child: Container(
-                        margin: const EdgeInsets.only(left: 16),
+                        margin: const EdgeInsets.only(
+                          left: 16,
+                          top: 16,
+                        ),
                         width: 45,
                         height: 45,
                         decoration: BoxDecoration(

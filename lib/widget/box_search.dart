@@ -13,30 +13,53 @@ class BoxSearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(24),
-      child: TextFormField(
-        onChanged: (value) {
-          if (value.isNotEmpty) {
-            provider.onSearch(value);
-          } else if (value.isEmpty) {
-            provider.onSearch(" ");
-          }
-        },
-        style: blackTextStyle.copyWith(
-          fontSize: 14,
-          fontWeight: semiBold,
-          letterSpacing: 1.2,
-        ),
-        decoration: InputDecoration(
-          hintText: 'Search Restaurant...',
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+      margin: const EdgeInsets.all(16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          GestureDetector(
+            onTap: (() => Navigator.pop(context)),
+            child: Container(
+              margin: const EdgeInsets.only(right: 16),
+              width: 45,
+              height: 45,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: kPrimaryColor,
+              ),
+              child: Icon(
+                Icons.arrow_back_ios_new,
+                color: kWhiteColor,
+              ),
+            ),
           ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: kPrimaryColor),
+          Expanded(
+            child: TextFormField(
+              onChanged: (value) {
+                if (value.isNotEmpty) {
+                  provider.onSearch(value);
+                } else if (value.isEmpty) {
+                  provider.onSearch(" ");
+                }
+              },
+              style: blackTextStyle.copyWith(
+                fontSize: 14,
+                fontWeight: semiBold,
+                letterSpacing: 1.2,
+              ),
+              decoration: InputDecoration(
+                hintText: 'Search Restaurant...',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(color: kPrimaryColor),
+                ),
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

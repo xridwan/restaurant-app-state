@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_app_state/api/api_service.dart';
 import 'package:restaurant_app_state/common/styles.dart';
 import 'package:restaurant_app_state/provider/restaurant_provider.dart';
 import 'package:restaurant_app_state/ui/restaurant_search_page.dart';
+import 'package:restaurant_app_state/widget/response_widget.dart';
 import 'package:restaurant_app_state/widget/restaurant_item.dart';
 
 class RestaurantListPage extends StatelessWidget {
@@ -29,17 +29,9 @@ class RestaurantListPage extends StatelessWidget {
             },
           );
         } else if (state.state == ResultState.error) {
-          return Center(
-            child: Lottie.asset(
-              'assets/no_internet.json',
-            ),
-          );
+          return noInternetWidget(state.message);
         } else {
-          return Center(
-            child: Lottie.asset(
-              'assets/empty_data.json',
-            ),
-          );
+          return emptyDataWidget(state.message);
         }
       },
     );
@@ -55,7 +47,7 @@ class RestaurantListPage extends StatelessWidget {
               Navigator.pushNamed(context, RestaurantSearchPage.routeName);
             },
             icon: Icon(
-              Icons.search,
+              Icons.search_sharp,
               color: kBlackColor,
             ),
           ),

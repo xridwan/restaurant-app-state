@@ -1,12 +1,4 @@
-import 'dart:convert';
-
 import 'package:restaurant_app_state/utils/config.dart';
-
-RestaurantDetail restaurantDetailFromJson(String str) =>
-    RestaurantDetail.fromJson(json.decode(str));
-
-String restaurantDetailToJson(RestaurantDetail data) =>
-    json.encode(data.toJson());
 
 class RestaurantDetail {
   RestaurantDetail({
